@@ -46,6 +46,7 @@ pipeline {
                     ping 127.0.0.1 -n 15
                     pytest --junitxml=result-rest.xml test\\rest
                 '''
+                junit 'result-rest.xml'
             }    
         }
 
