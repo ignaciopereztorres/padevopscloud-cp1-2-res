@@ -1,0 +1,676 @@
+Started by user Ignacio Pérez Torres
+
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins
+ in /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Get Code)
+[Pipeline] echo
+Get Code from GitHub
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/ignaciopereztorres/padevopscloud-cp1-2-res.git # timeout=10
+Fetching upstream changes from https://github.com/ignaciopereztorres/padevopscloud-cp1-2-res.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5 (Apple Git-154)'
+ > git fetch --tags --force --progress -- https://github.com/ignaciopereztorres/padevopscloud-cp1-2-res.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+Checking out Revision 9a03c9ed0d1e0d0a422c62effde0e31ae6bee9a8 (refs/remotes/origin/master)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 9a03c9ed0d1e0d0a422c62effde0e31ae6bee9a8 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D master # timeout=10
+ > git checkout -b master 9a03c9ed0d1e0d0a422c62effde0e31ae6bee9a8 # timeout=10
+Commit message: "Update JENKINSFILE_agentes - avoid auto-checkout"
+ > git rev-list --no-walk 9a03c9ed0d1e0d0a422c62effde0e31ae6bee9a8 # timeout=10
+[Pipeline] sh
++ ls -l
+total 72
+-rw-r--r--  1 ignaciopereztorres  staff  2830 Jun 23 10:41 JENKINSFILE
+-rw-r--r--  1 ignaciopereztorres  staff  4548 Jun 23 10:41 JENKINSFILE_agentes
+-rw-r--r--  1 ignaciopereztorres  staff   413 Jun 23 10:41 README.md
+drwxr-xr-x  7 ignaciopereztorres  staff   224 Jun 23 11:58 app
+-rw-r--r--  1 ignaciopereztorres  staff   384 Jun 23 12:09 bandit.out
+-rw-r--r--  1 ignaciopereztorres  staff  2184 Jun 23 12:09 coverage.xml
+-rw-r--r--  1 ignaciopereztorres  staff   500 Jun 23 12:09 flake8.out
+-rw-r--r--  1 ignaciopereztorres  staff   169 Jun 23 10:41 pytest.ini
+-rw-r--r--  1 ignaciopereztorres  staff  1442 Jun 23 12:09 result-unit.xml
+drwxr-xr-x  6 ignaciopereztorres  staff   192 Jun 23 10:41 test
+[Pipeline] echo
+/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Flake8)
+[Pipeline] sh
++ flake8 --exit-zero --format=pylint app
+[Pipeline] recordIssues
+[Flake8] Searching for all files in '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3' that match the pattern 'flake8.out'
+[Flake8] Traversing of symbolic links: enabled
+[Flake8] -> found 1 file
+[Flake8] Successfully parsed file /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3/flake8.out
+[Flake8] -> found 9 issues (skipped 0 duplicates)
+[Flake8] Successfully processed file 'flake8.out'
+[Flake8] Post processing issues on 'Master' with source code encoding 'UTF-8'
+[Flake8] Creating SCM blamer to obtain author and commit information for affected files
+[Flake8] -> No blamer installed yet. You need to install the 'git-forensics' plugin to enable blaming for Git.
+[Flake8] Resolving file names for all issues in workspace '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3'
+[Flake8] -> resolved paths in source directory (2 found, 0 not found)
+[Flake8] Resolving module names from module definitions (build.xml, pom.xml, or Manifest.mf files)
+[Flake8] -> resolved module names for 9 issues
+[Flake8] Resolving package names (or namespaces) by parsing the affected files
+[Flake8] -> resolved package names of 2 affected files
+[Flake8] No filter has been set, publishing all 9 issues
+[Flake8] Creating fingerprints for all affected code blocks to track issues over different builds
+[Flake8] -> created fingerprints for 9 issues (skipped 0 issues)
+[Flake8] Copying affected files to Jenkins' build folder '/Users/ignaciopereztorres/.jenkins/jobs/P25/jobs/Pipeline3/builds/11/files-with-issues'
+[Flake8] -> 2 copied, 0 not in workspace, 0 not-found, 0 with I/O error
+[Flake8] Skipping cleaning of source code files in old builds
+[Flake8] Repository miner is not configured, skipping repository mining
+[Flake8] Searching for all files in '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3' that match the pattern 'flake8.out'
+[Flake8] Traversing of symbolic links: enabled
+[Flake8] -> found 1 file
+[Flake8] Successfully parsed file /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3/flake8.out
+[Flake8] -> found 9 issues (skipped 0 duplicates)
+[Flake8] Successfully processed file 'flake8.out'
+[Flake8] Post processing issues on 'Master' with source code encoding 'UTF-8'
+[Flake8] Creating SCM blamer to obtain author and commit information for affected files
+[Flake8] -> No blamer installed yet. You need to install the 'git-forensics' plugin to enable blaming for Git.
+[Flake8] Resolving file names for all issues in workspace '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3'
+[Flake8] -> resolved paths in source directory (2 found, 0 not found)
+[Flake8] Resolving module names from module definitions (build.xml, pom.xml, or Manifest.mf files)
+[Flake8] -> resolved module names for 9 issues
+[Flake8] Resolving package names (or namespaces) by parsing the affected files
+[Flake8] -> resolved package names of 2 affected files
+[Flake8] No filter has been set, publishing all 9 issues
+[Flake8] Creating fingerprints for all affected code blocks to track issues over different builds
+[Flake8] -> created fingerprints for 9 issues (skipped 0 issues)
+[Flake8] Copying affected files to Jenkins' build folder '/Users/ignaciopereztorres/.jenkins/jobs/P25/jobs/Pipeline3/builds/11/files-with-issues'
+[Flake8] -> 2 copied, 0 not in workspace, 0 not-found, 0 with I/O error
+[Flake8] Skipping cleaning of source code files in old builds
+[Flake8] Repository miner is not configured, skipping repository mining
+[Flake8] Reference build recorder is not configured
+[Flake8] No valid reference build found
+[Flake8] All reported issues will be considered outstanding
+[Flake8] Evaluating quality gates
+[Flake8] -> Some quality gates have been missed: overall result is UNSTABLE
+[Flake8] -> Details for each quality gate:
+[Flake8]    - [Total (any severity)]: ≪Unstable≫ - (Actual value: 9, Quality gate: 8.00)
+[Flake8]    - [Total (any severity)]: ≪Success≫ - (Actual value: 9, Quality gate: 10.00)
+[Flake8] Health report is disabled - skipping
+[Flake8] Created analysis result for 9 issues (found 0 new issues, fixed 0 issues)
+[Flake8] Attaching ResultAction with ID 'flake8' to build 'P25/Pipeline3 #11'.
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Security)
+[Pipeline] sh
++ bandit --exit-zero -r . -f custom -o bandit.out --severity-level medium --msg-template '{abspath}:{line}: [{test_id}] {msg}'
+[main]	INFO	profile include tests: None
+[main]	INFO	profile exclude tests: None
+[main]	INFO	cli include tests: None
+[main]	INFO	cli exclude tests: None
+[main]	INFO	running on Python 3.12.7
+[custom]	INFO	Result written to file: bandit.out
+[Pipeline] recordIssues
+[Bandit] Searching for all files in '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3' that match the pattern 'bandit.out'
+[Bandit] Traversing of symbolic links: enabled
+[Bandit] -> found 1 file
+[Bandit] Successfully parsed file /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3/bandit.out
+[Bandit] -> found 2 issues (skipped 0 duplicates)
+[Bandit] Successfully processed file 'bandit.out'
+[Bandit] Post processing issues on 'Master' with source code encoding 'UTF-8'
+[Bandit] Creating SCM blamer to obtain author and commit information for affected files
+[Bandit] -> No blamer installed yet. You need to install the 'git-forensics' plugin to enable blaming for Git.
+[Bandit] Resolving file names for all issues in workspace '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3'
+[Bandit] -> resolved paths in source directory (1 found, 0 not found)
+[Bandit] Resolving module names from module definitions (build.xml, pom.xml, or Manifest.mf files)
+[Bandit] -> resolved module names for 2 issues
+[Bandit] Resolving package names (or namespaces) by parsing the affected files
+[Bandit] -> resolved package names of 1 affected files
+[Bandit] No filter has been set, publishing all 2 issues
+[Bandit] Creating fingerprints for all affected code blocks to track issues over different builds
+[Bandit] -> created fingerprints for 2 issues (skipped 0 issues)
+[Bandit] Copying affected files to Jenkins' build folder '/Users/ignaciopereztorres/.jenkins/jobs/P25/jobs/Pipeline3/builds/11/files-with-issues'
+[Bandit] -> 1 copied, 0 not in workspace, 0 not-found, 0 with I/O error
+[Bandit] Skipping cleaning of source code files in old builds
+[Bandit] Repository miner is not configured, skipping repository mining
+[Bandit] Searching for all files in '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3' that match the pattern 'bandit.out'
+[Bandit] Traversing of symbolic links: enabled
+[Bandit] -> found 1 file
+[Bandit] Successfully parsed file /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3/bandit.out
+[Bandit] -> found 2 issues (skipped 0 duplicates)
+[Bandit] Successfully processed file 'bandit.out'
+[Bandit] Post processing issues on 'Master' with source code encoding 'UTF-8'
+[Bandit] Creating SCM blamer to obtain author and commit information for affected files
+[Bandit] -> No blamer installed yet. You need to install the 'git-forensics' plugin to enable blaming for Git.
+[Bandit] Resolving file names for all issues in workspace '/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3'
+[Bandit] -> resolved paths in source directory (1 found, 0 not found)
+[Bandit] Resolving module names from module definitions (build.xml, pom.xml, or Manifest.mf files)
+[Bandit] -> resolved module names for 2 issues
+[Bandit] Resolving package names (or namespaces) by parsing the affected files
+[Bandit] -> resolved package names of 1 affected files
+[Bandit] No filter has been set, publishing all 2 issues
+[Bandit] Creating fingerprints for all affected code blocks to track issues over different builds
+[Bandit] -> created fingerprints for 2 issues (skipped 0 issues)
+[Bandit] Copying affected files to Jenkins' build folder '/Users/ignaciopereztorres/.jenkins/jobs/P25/jobs/Pipeline3/builds/11/files-with-issues'
+[Bandit] -> 1 copied, 0 not in workspace, 0 not-found, 0 with I/O error
+[Bandit] Skipping cleaning of source code files in old builds
+[Bandit] Repository miner is not configured, skipping repository mining
+[Bandit] Reference build recorder is not configured
+[Bandit] No valid reference build found
+[Bandit] All reported issues will be considered outstanding
+[Bandit] Evaluating quality gates
+[Bandit] -> Some quality gates have been missed: overall result is UNSTABLE
+[Bandit] -> Details for each quality gate:
+[Bandit]    - [Total (any severity)]: ≪Unstable≫ - (Actual value: 2, Quality gate: 2.00)
+[Bandit]    - [Total (any severity)]: ≪Success≫ - (Actual value: 2, Quality gate: 4.00)
+[Bandit] Health report is disabled - skipping
+[Bandit] Created analysis result for 2 issues (found 0 new issues, fixed 0 issues)
+[Bandit] Attaching ResultAction with ID 'pylint' to build 'P25/Pipeline3 #11'.
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Unit)
+[Pipeline] sh
++ export PYTHONPATH=/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3
++ PYTHONPATH=/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3
++ coverage run --branch --source=app --omit=app/__init__.py,app/api.py -m pytest --junitxml=result-unit.xml test/unit
+============================= test session starts ==============================
+platform darwin -- Python 3.12.7, pytest-8.4.0, pluggy-1.6.0
+rootdir: /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3
+configfile: pytest.ini
+collected 10 items
+
+test/unit/calc_test.py ........                                          [ 80%]
+test/unit/util_test.py ..                                                [100%]
+
+- generated xml file: /Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3/result-unit.xml -
+============================== 10 passed in 0.02s ==============================
+[Pipeline] junit
+Recording test results
+[Checks API] No suitable checks publisher found.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Cobertura)
+[Pipeline] sh
++ coverage xml
+Wrote XML report to coverage.xml
+[Pipeline] catchError
+[Pipeline] {
+[Pipeline] cobertura
+[Cobertura] Publishing Cobertura coverage report...
+
+[Cobertura] Publishing Cobertura coverage results...
+
+[Cobertura] Cobertura coverage report found.
+
+[Pipeline] }
+[Pipeline] // catchError
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Performance)
+[Pipeline] sh
++ export FLASK_APP=app/api.py
++ FLASK_APP=app/api.py
++ export FLASK_ENV=development
++ FLASK_ENV=development
++ ping -c 10 127.0.0.1
++ nohup flask run
+PING 127.0.0.1 (127.0.0.1): 56 data bytes
+64 bytes from 127.0.0.1: icmp_seq=0 ttl=64 time=0.088 ms
+ * Serving Flask app 'app/api.py'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[33mPress CTRL+C to quit[0m
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.118 ms
+64 bytes from 127.0.0.1: icmp_seq=2 ttl=64 time=0.156 ms
+64 bytes from 127.0.0.1: icmp_seq=3 ttl=64 time=0.105 ms
+64 bytes from 127.0.0.1: icmp_seq=4 ttl=64 time=0.120 ms
+64 bytes from 127.0.0.1: icmp_seq=5 ttl=64 time=0.133 ms
+64 bytes from 127.0.0.1: icmp_seq=6 ttl=64 time=0.099 ms
+64 bytes from 127.0.0.1: icmp_seq=7 ttl=64 time=0.126 ms
+64 bytes from 127.0.0.1: icmp_seq=8 ttl=64 time=0.144 ms
+64 bytes from 127.0.0.1: icmp_seq=9 ttl=64 time=0.079 ms
+
+--- 127.0.0.1 ping statistics ---
+10 packets transmitted, 10 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 0.079/0.117/0.156/0.023 ms
++ /Users/ignaciopereztorres/JMeter/apache-jmeter-5.6.3/bin/jmeter -n -t test/jmeter/flask.jmx -f -l flask.jtl
+WARNING: package sun.awt.X11 not in java.desktop
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+WARN StatusConsoleListener The use of package scanning to locate plugins is deprecated and will be removed in a future release
+Creating summariser <summary>
+Created the tree successfully using test/jmeter/flask.jmx
+Starting standalone test @ 2025 Jun 23 12:57:24 CEST (1750676244220)
+Waiting for possible Shutdown/StopTestNow/HeapDump/ThreadDump message on port 4445
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:24] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/add/4/9 HTTP/1.1" 200 -
+127.0.0.1 - - [23/Jun/2025 12:57:25] "GET /calc/substract/25/19 HTTP/1.1" 200 -
+summary =    400 in 00:00:01 =  400.8/s Avg:     0 Min:     0 Max:    11 Err:     0 (0.00%)
+Tidying up ...    @ 2025 Jun 23 12:57:25 CEST (1750676245247)
+... end of run
+[Pipeline] perfReport
+Creating parser with percentiles:'0,50,90,95,100,' filterRegex:null
+Performance: Recording JMeterCsv reports 'flask.jtl'
+Performance: JMeterCsv copying reports to master, files '[/Users/ignaciopereztorres/.jenkins/workspace/P25/Pipeline3/flask.jtl]'
+Performance: JMeterCsv parsing local reports '[/Users/ignaciopereztorres/.jenkins/jobs/P25/jobs/Pipeline3/builds/11/performance-reports/JMeterCSV/flask.jtl]'
+Performance: Parsing report file '/Users/ignaciopereztorres/.jenkins/jobs/P25/jobs/Pipeline3/builds/11/performance-reports/JMeterCSV/flask.jtl' with filterRegex 'null'.
+Performance: No threshold configured for making the test unstable
+Performance: No threshold configured for making the test failure
+Performance: File flask.jtl reported 0.0% of errors [SUCCESS]. Build status is: UNSTABLE
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: UNSTABLE
