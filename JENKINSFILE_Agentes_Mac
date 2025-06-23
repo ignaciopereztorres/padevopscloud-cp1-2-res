@@ -1,0 +1,89 @@
+pipeline {
+    agent any
+
+    options {
+        skipDefaultCheckout true
+    }
+
+    stages {
+        stage('Get Code') {
+            steps {
+                git 'https://github.com/ignaciopereztorres/padevopscloud-cp1-2-res.git'
+                stash name:'code', includes:'**'
+            }
+        }
+
+        stage('Static Tests')
+        {
+            parallel
+            {
+                stage('Flake8') {
+                    agent {label 'agent1'}
+                    steps {
+                        unstash name:'code'
+                        sh '''
+                            flake8 --exit-zero --format=pylint app > flake8.out
+                        '''
+                        recordIssues tools: [flake8(name: 'Flake8', pattern: 'flake8.out')], qualityGates: [[threshold: 8, type: 'TOTAL', unstable: true], [threshold: 10, type: 'TOTAL', unstable: false]]
+                    }
+                }
+
+                stage('Security') {
+                    agent {label 'agent2'}
+                    steps {
+                        unstash name:'code'
+                        sh '''
+                            bandit --exit-zero -r . -f custom -o bandit.out --severity-level medium --msg-template "{abspath}:{line}: [{test_id}] {msg}"
+                        '''
+                        recordIssues tools: [pyLint(name: 'Bandit', pattern: 'bandit.out')], qualityGates: [[threshold: 2, type: 'TOTAL', unstable: true], [threshold: 4, type: 'TOTAL', unstable: false]]
+                    }
+                }
+            }
+        }
+
+        stage('Dynamic Tests')
+        {
+            parallel
+            {
+                stage('Unit') {
+                    agent {label 'agent1'}
+                    steps {
+                        unstash name:'code'
+                        sh '''
+                            export PYTHONPATH=$WORKSPACE
+                            coverage run --branch --source=app --omit=app/__init__.py,app/api.py -m pytest --junitxml=result-unit.xml test/unit
+                            coverage xml
+                       '''
+                        stash name:'coverage', includes:'coverage.xml'
+                        junit 'result-unit.xml'
+                    }
+                }
+
+                stage('Performance') {
+                    agent {label 'agent2'}
+                    steps {
+                        unstash name:'code'
+                        sh '''
+                            export FLASK_APP=app/api.py
+                            export FLASK_ENV=development
+                            nohup flask run &
+                            ping -c 10 127.0.0.1
+
+                            /Users/ignaciopereztorres/JMeter/apache-jmeter-5.6.3/bin/jmeter -n -t test/jmeter/flask.jmx -f -l flask.jtl
+                        '''
+                        perfReport sourceDataFiles: 'flask.jtl'
+                    }
+                }
+            }
+        }
+
+        stage('Cobertura') {
+            steps {
+        	    unstash name:'coverage'
+                catchError(buildResult: 'UNSTABLE', stageResult: 'FAILURE') {
+                    cobertura coberturaReportFile: 'coverage.xml', conditionalCoverageTargets: '100,0,80', lineCoverageTargets: '100,0,85', onlyStable: false, failUnstable: false
+                }
+            }
+        }
+    }
+}
